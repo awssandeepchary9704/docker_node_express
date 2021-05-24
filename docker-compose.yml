@@ -1,0 +1,31 @@
+#version: "3"
+#services:
+#    node_app:
+#        build: .
+#        ports: 
+#            - "3000:3000"
+#        environment:
+#            - PORT=3000                    
+version: "3"
+services: 
+    node_app:
+        build: .
+        ports: 
+            - "3000:3000"
+        environment: 
+            - PORT=3000
+    # adding mongo db this should be lined with node_app and we can call what ever we want
+    mongo:
+        image: mongo
+        # before that we have build dockerfile with that we can build, here we are taking image
+        environment: 
+            - MONGO_INITDB_ROOT_USERNAME=samantha
+            - MONGO_INITDB_ROOT_PASSWORD=samantha123
+        volumes: 
+            - mongo-db:/data/db
+            # name: /data/db
+            # here we are using named volumes,named volumes need some declaration,if we have mongo instance
+            # or other service this volume can be used
+       
+volumes: 
+    mongo-db: 

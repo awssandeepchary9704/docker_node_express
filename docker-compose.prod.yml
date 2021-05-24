@@ -1,0 +1,18 @@
+#version: "3"
+#services: 
+#    node_app:
+#        environment: 
+#            - NODE_ENV=production
+#        command: node index.js
+version: "3"
+services: 
+    node_app:
+        build: 
+            context: .
+            args: # all the different arguments we can pass
+                NODE_ENV: production
+        environment: 
+            - NODE_ENV=development
+        command: node index.js
+            
+            
